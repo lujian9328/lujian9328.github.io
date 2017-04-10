@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          Java Data Type - Beantech | 豆科技
+          Statements That Break Control Flow  - Beantech | 豆科技
         
     </title>
 
-    <link rel="canonical" href="http://yoursite-url/2017/04/09/Java-Data-Type/">
+    <link rel="canonical" href="http://yoursite-url/2017/04/10/Statements-That-Break-Control-Flow/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -89,11 +89,11 @@
                               <a class="tag" href="/tags/#Java" title="Java">Java</a>
                             
                         </div>
-                        <h1>Java Data Type</h1>
+                        <h1>Statements That Break Control Flow </h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by Lu Jian on
-                            2017-04-09
+                            2017-04-10
                         </span>
                     </div>
                 
@@ -210,64 +210,12 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2 id="java数据类型">Java数据类型</h2>
-<p>在Java中，一共有8种基本类型(primitive type)，其中4种整型、2种浮点类型、1种用于表示Unicode编码的字符单元的字符类型char和一种用于表示真值的boolean类型。</p>
-<p><strong>3.3.1 整型</strong></p>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th style="text-align:center">存储需求</th>
-<th style="text-align:right">取值范围</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>int</td>
-<td style="text-align:center">4字节</td>
-<td style="text-align:right">-2 146 483 648 ~ 2 147 483 647</td>
-</tr>
-<tr>
-<td>short</td>
-<td style="text-align:center">2字节</td>
-<td style="text-align:right">-32 768 ~ 32 767</td>
-</tr>
-<tr>
-<td>long</td>
-<td style="text-align:center">8字节</td>
-<td style="text-align:right">-9 223 372 036 854 775 808 ~ -9 223 372 036 854 775 807</td>
-</tr>
-<tr>
-<td>byte</td>
-<td style="text-align:center">1字节</td>
-<td style="text-align:right">-128 ~ 127</td>
-</tr>
-</tbody>
-</table>
-<p><strong>3.3.2 浮点类型</strong></p>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th style="text-align:center">存储需求</th>
-<th style="text-align:right">取值范围</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>float</td>
-<td style="text-align:center">4字节</td>
-<td style="text-align:right">-2^128 ~ +2^127，也即-3.40E+38 ~ +3.40E+38</td>
-</tr>
-<tr>
-<td>double</td>
-<td style="text-align:center">8字节</td>
-<td style="text-align:right">-2^1024 ~ +2^1023，也即-1.79E+308 ~ +1.79E+308</td>
-</tr>
-</tbody>
-</table>
-<p><strong>3.4.2 常量</strong><br>
-在Java中，利用关键字final声明常量。const 是Java保留的关键字，但目前并没有使用。在Java中，必须使用final定义常量。</p>
+                <h3 id="labeled-break">Labeled Break</h3>
+<p>Unlike C++, Java also offers a labeled break statement that lets you break out of multiple nested loops. Occasionally something weird happens inside a deeply nested loop. In that case, you may want to break completely out of all the nested loops. It is inconvenient to program that simply by adding extra conditions to the various loop tests.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">Scanner in = <span class="keyword">new</span> Scanner(System.in);</div><div class="line"><span class="keyword">int</span> n;</div><div class="line">read_data:    <span class="comment">// here 'read_data:' is a label expression</span></div><div class="line"><span class="keyword">while</span> (. . .) <span class="comment">// this loop statement is tagged with the label </span></div><div class="line">&#123;</div><div class="line">    ...</div><div class="line">    <span class="keyword">for</span> (. . .) <span class="comment">// this inner loop is not labeled &#123;</span></div><div class="line">        System.out.print(<span class="string">"Enter a number &gt;= 0: "</span>);</div><div class="line">        n = in.nextInt();</div><div class="line">        <span class="keyword">if</span> (n &lt; <span class="number">0</span>) <span class="comment">// should never happen—can't go on</span></div><div class="line">            <span class="keyword">break</span> read_data;</div><div class="line">            <span class="comment">// break out of read_data loop</span></div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// this statement is executed immediately after the labeled break </span></div><div class="line"><span class="keyword">if</span> (n &lt; <span class="number">0</span>) <span class="comment">// check for bad situation</span></div><div class="line">&#123;</div><div class="line">    <span class="comment">// deal with bad situation</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span></div><div class="line">&#123;</div><div class="line">    <span class="comment">// carry out normal processing</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>If there is a bad input, the labeled break moves past the end of the labeled block.<br>
+As with any use of the <em>break</em> statement, you then need to test whether the loop exited normally or as a result of a break.</p>
+<p>There is also a labeled form of the <em>continue</em> statement that jumps to the header of the loop with the matching label.</p>
 
                 
 
@@ -276,13 +224,9 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/2017/04/09/Static-Member-Function-Variable/" data-toggle="tooltip" data-placement="top" title="Static Member Function & Variable">&larr; Previous Post</a>
+                            <a href="/2017/04/10/Java-Code-Points-and-Code-Units/" data-toggle="tooltip" data-placement="top" title="Java Code Points and Code Units">&larr; Previous Post</a>
                         </li>
                     
-                    
-                        <li class="next">
-                            <a href="/2017/04/10/Java-Code-Points-and-Code-Units/" data-toggle="tooltip" data-placement="top" title="Java Code Points and Code Units">Next Post &rarr;</a>
-                        </li>
                     
                 </ul>
 
@@ -311,7 +255,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#java数据类型"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Java数据类型</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#labeled-break"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Labeled Break</span></a></li></ol>
         
         </div>
       </aside>
@@ -366,8 +310,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "your-disqus-ID";
-    var disqus_identifier = "http://yoursite-url/2017/04/09/Java-Data-Type/";
-    var disqus_url = "http://yoursite-url/2017/04/09/Java-Data-Type/";
+    var disqus_identifier = "http://yoursite-url/2017/04/10/Statements-That-Break-Control-Flow/";
+    var disqus_url = "http://yoursite-url/2017/04/10/Statements-That-Break-Control-Flow/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
