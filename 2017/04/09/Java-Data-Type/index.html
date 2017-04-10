@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          Binary-Search - Beantech | 豆科技
+          Java Data Type - Beantech | 豆科技
         
     </title>
 
-    <link rel="canonical" href="http://yoursite-url/2017/04/07/Binary-Search/">
+    <link rel="canonical" href="http://yoursite-url/2017/04/09/Java-Data-Type/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -69,7 +69,7 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('null')
+            background-image: url('Demo.png')
             /*post*/
         
     }
@@ -87,11 +87,11 @@
                         <div class="tags">
                             
                         </div>
-                        <h1>Binary-Search</h1>
+                        <h1>Java Data Type</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by Lu Jian on
-                            2017-04-07
+                            2017-04-09
                         </span>
                     </div>
                 
@@ -208,18 +208,64 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>本文记录关于二分搜索的学习笔记</p>
-<h2 id="对有序数组的二分查找">对有序数组的二分查找</h2>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">bsearch</span><span class="params">(<span class="keyword">int</span> target, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp;arr, <span class="keyword">int</span> begin, <span class="keyword">int</span> end)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (begin &gt; end) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> middle = (begin + end) / <span class="number">2</span>;</div><div class="line">    <span class="keyword">if</span> (arr[middle] == target) &#123;</div><div class="line">        <span class="keyword">return</span> middle;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (arr[middle] &gt; target) &#123;</div><div class="line">        <span class="keyword">return</span> bsearch(target, arr, begin, middle);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> bsearch(target, arr, middle, end);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>Time complexity:<br>
-T(n) &lt;= T(n / 2) + O(1)<br>
-&lt;= (T(n / 4) + O(1)) + O(1) = T(n / 4) + 2 * O(1)<br>
-&lt;= …<br>
-&lt;= T(n / 2<sup>k</sup>) + k * O(1)<br>
-Let n / 2<sup>k</sup> = 1, then k = log<sub>2</sub>n相当于log(n)<br>
-So T(n) &lt;= O(log(n))</li>
-</ul>
+                <p>Java数据类型</p>
+<p>在Java中，一共有8种基本类型(primitive type)，其中4种整型、2种浮点类型、1种用于表示Unicode编码的字符单元的字符类型char和一种用于表示真值的boolean类型。</p>
+<p><strong>3.3.1 整型</strong></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th style="text-align:center">存储需求</th>
+<th style="text-align:right">取值范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int</td>
+<td style="text-align:center">4字节</td>
+<td style="text-align:right">-2 146 483 648 ~ 2 147 483 647</td>
+</tr>
+<tr>
+<td>short</td>
+<td style="text-align:center">2字节</td>
+<td style="text-align:right">-32 768 ~ 32 767</td>
+</tr>
+<tr>
+<td>long</td>
+<td style="text-align:center">8字节</td>
+<td style="text-align:right">-9 223 372 036 854 775 808 ~ -9 223 372 036 854 775 807</td>
+</tr>
+<tr>
+<td>byte</td>
+<td style="text-align:center">1字节</td>
+<td style="text-align:right">-128 ~ 127</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.3.2 浮点类型</strong></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th style="text-align:center">存储需求</th>
+<th style="text-align:right">取值范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>float</td>
+<td style="text-align:center">4字节</td>
+<td style="text-align:right">-2^128 ~ +2^127，也即-3.40E+38 ~ +3.40E+38</td>
+</tr>
+<tr>
+<td>double</td>
+<td style="text-align:center">8字节</td>
+<td style="text-align:right">-2^1024 ~ +2^1023，也即-1.79E+308 ~ +1.79E+308</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.4.2 常量</strong><br>
+在Java中，利用关键字final声明常量。const 是Java保留的关键字，但目前并没有使用。在Java中，必须使用final定义常量。</p>
 
                 
 
@@ -228,12 +274,12 @@ So T(n) &lt;= O(log(n))</li>
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/2017/03/18/hexo-theme-beantech/" data-toggle="tooltip" data-placement="top" title="[Hexo] Theme BeanTech">&larr; Previous Post</a>
+                            <a href="/2017/04/09/Static-Member-Function-Variable/" data-toggle="tooltip" data-placement="top" title="Static Member Function & Variable">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/2017/04/09/Static-Member-Function-Variable/" data-toggle="tooltip" data-placement="top" title="Static Member Function & Variable">Next Post &rarr;</a>
+                            <a href="/2017/04/10/Java-Code-Points-and-Code-Units/" data-toggle="tooltip" data-placement="top" title="Java Code Points and Code Units">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -263,7 +309,7 @@ So T(n) &lt;= O(log(n))</li>
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#对有序数组的二分查找"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">对有序数组的二分查找</span></a></li></ol>
+          <ol class="nav">none</ol>
         
         </div>
       </aside>
@@ -316,8 +362,8 @@ So T(n) &lt;= O(log(n))</li>
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "your-disqus-ID";
-    var disqus_identifier = "http://yoursite-url/2017/04/07/Binary-Search/";
-    var disqus_url = "http://yoursite-url/2017/04/07/Binary-Search/";
+    var disqus_identifier = "http://yoursite-url/2017/04/09/Java-Data-Type/";
+    var disqus_url = "http://yoursite-url/2017/04/09/Java-Data-Type/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

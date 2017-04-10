@@ -7,8 +7,24 @@
     </url>
 
     <url>
+        <loc>http://yoursite-url/2017/04/10/Java-Code-Points-and-Code-Units/</loc>
+        <lastmod>2017-04-10T06:53:24.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite-url/2017/04/09/Java-Data-Type/</loc>
+        <lastmod>2017-04-10T06:53:21.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite-url/2017/04/09/Static-Member-Function-Variable/</loc>
-        <lastmod>2017-04-09T15:23:13.000Z</lastmod>
+        <lastmod>2017-04-09T15:30:32.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

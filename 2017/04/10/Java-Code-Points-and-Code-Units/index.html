@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          Binary-Search - Beantech | 豆科技
+          Java Code Points and Code Units - Beantech | 豆科技
         
     </title>
 
-    <link rel="canonical" href="http://yoursite-url/2017/04/07/Binary-Search/">
+    <link rel="canonical" href="http://yoursite-url/2017/04/10/Java-Code-Points-and-Code-Units/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -69,7 +69,7 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('null')
+            background-image: url('Demo.png')
             /*post*/
         
     }
@@ -87,11 +87,11 @@
                         <div class="tags">
                             
                         </div>
-                        <h1>Binary-Search</h1>
+                        <h1>Java Code Points and Code Units</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by Lu Jian on
-                            2017-04-07
+                            2017-04-10
                         </span>
                     </div>
                 
@@ -208,19 +208,11 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>本文记录关于二分搜索的学习笔记</p>
-<h2 id="对有序数组的二分查找">对有序数组的二分查找</h2>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">bsearch</span><span class="params">(<span class="keyword">int</span> target, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp;arr, <span class="keyword">int</span> begin, <span class="keyword">int</span> end)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (begin &gt; end) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> middle = (begin + end) / <span class="number">2</span>;</div><div class="line">    <span class="keyword">if</span> (arr[middle] == target) &#123;</div><div class="line">        <span class="keyword">return</span> middle;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (arr[middle] &gt; target) &#123;</div><div class="line">        <span class="keyword">return</span> bsearch(target, arr, begin, middle);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> bsearch(target, arr, middle, end);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>Time complexity:<br>
-T(n) &lt;= T(n / 2) + O(1)<br>
-&lt;= (T(n / 4) + O(1)) + O(1) = T(n / 4) + 2 * O(1)<br>
-&lt;= …<br>
-&lt;= T(n / 2<sup>k</sup>) + k * O(1)<br>
-Let n / 2<sup>k</sup> = 1, then k = log<sub>2</sub>n相当于log(n)<br>
-So T(n) &lt;= O(log(n))</li>
-</ul>
-
+                <h3 id="code-point">Code Point</h3>
+<p>是指编码字符集中，字符所对应的数字。有效范围从U+0000到U+10FFFF。(int型)其中U+0000到U+FFFF为<strong>基本字符</strong>，U+10000到U+10FFFF为<strong>增补字符</strong>。</p>
+<h3 id="code-unit">Code Unit</h3>
+<p>对代码点进行编码得到的<strong>1或2个16位序列</strong>（UTF-16）（char型），如下代码中第4行 “\D835\uDD6B” 表示一个代码点两个代码单元。其中基本字符的代码点直接用一个相同值的代码单元表示，增补字符的代码点用两个代码单元进行编码，编码值来自U+D800到U+DFFF，这个范围内没有数字用于表示字符，因此程序可以识别出当前字符是单单元的基本字符，还是双单元的增补字符。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        String sentence = <span class="string">"\u03C0 \uD835\uDD6B"</span>; <span class="comment">// "\D835\uDD6B" &lt;==&gt; 1个code points, 2个code units</span></div><div class="line">        <span class="keyword">int</span> lengthU = sentence.length();</div><div class="line">        <span class="keyword">int</span> lengthP = sentence.codePointCount(<span class="number">0</span>, lengthU);</div><div class="line">        System.out.println(lengthU);        <span class="comment">// 4个code units</span></div><div class="line">        System.out.println(lengthP);        <span class="comment">// 3个code points</span></div><div class="line"></div><div class="line">        <span class="keyword">int</span> i = sentence.codePointAt(<span class="number">2</span>);    <span class="comment">// i=2 true  i=0,1,3 false  i=4 out of bound</span></div><div class="line"></div><div class="line">        <span class="keyword">boolean</span> b = Character.isSupplementaryCodePoint(i);</div><div class="line">        System.out.println(b);              <span class="comment">// true</span></div><div class="line">        System.out.println(sentence);       <span class="comment">// π 𝕫</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
                 
 
                 <hr>
@@ -228,13 +220,9 @@ So T(n) &lt;= O(log(n))</li>
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/2017/03/18/hexo-theme-beantech/" data-toggle="tooltip" data-placement="top" title="[Hexo] Theme BeanTech">&larr; Previous Post</a>
+                            <a href="/2017/04/09/Java-Data-Type/" data-toggle="tooltip" data-placement="top" title="Java Data Type">&larr; Previous Post</a>
                         </li>
                     
-                    
-                        <li class="next">
-                            <a href="/2017/04/09/Static-Member-Function-Variable/" data-toggle="tooltip" data-placement="top" title="Static Member Function & Variable">Next Post &rarr;</a>
-                        </li>
                     
                 </ul>
 
@@ -263,7 +251,7 @@ So T(n) &lt;= O(log(n))</li>
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#对有序数组的二分查找"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">对有序数组的二分查找</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#code-point"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Code Point</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#code-unit"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Code Unit</span></a></li></ol>
         
         </div>
       </aside>
@@ -316,8 +304,8 @@ So T(n) &lt;= O(log(n))</li>
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "your-disqus-ID";
-    var disqus_identifier = "http://yoursite-url/2017/04/07/Binary-Search/";
-    var disqus_url = "http://yoursite-url/2017/04/07/Binary-Search/";
+    var disqus_identifier = "http://yoursite-url/2017/04/10/Java-Code-Points-and-Code-Units/";
+    var disqus_url = "http://yoursite-url/2017/04/10/Java-Code-Points-and-Code-Units/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
