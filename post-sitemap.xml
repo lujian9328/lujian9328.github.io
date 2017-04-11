@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://yoursite-url/2017/04/11/C-Advanced-Features/</loc>
+        <lastmod>2017-04-10T17:52:11.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite-url/2017/04/09/Java-Data-Type/</loc>
         <lastmod>2017-04-10T09:24:59.000Z</lastmod>
         <changefreq>weekly</changefreq>
