@@ -211,7 +211,7 @@
                 post-container">
 
                 <h2 id="c-函数高级特征">C++ 函数高级特征</h2>
-<p>重载（overloaded）、内联（inline）、const 和virtual是C++独有而C不具有的四种机制。其中<strong>重载和内联机制既可用于全局函数也可用于类的成员函数，const 与virtual机制仅用于类的成员函数</strong>。重载和内联是一把双刃剑，用的好可以提高效率，精简程序；而一味滥用也会影响程序的效果。这里根据笔试面试中常碰到的问题，探究一下重载和内联的优点与局限性，说明应该不应该使用的场景。</p>
+<p>重载（overload）、内联（inline）、const 和virtual是C++独有而C不具有的四种机制。其中<strong>重载和内联机制既可用于全局函数也可用于类的成员函数，const 与virtual机制仅用于类的成员函数</strong>。重载和内联是一把双刃剑，用的好可以提高效率，精简程序；而一味滥用也会影响程序的效果。这里根据笔试面试中常碰到的问题，探究一下重载和内联的优点与局限性，说明应该不应该使用的场景。</p>
 <h3 id="1-函数重载">1. 函数重载</h3>
 <p><strong>1.1 重载的定义和意义</strong><br>
 在C++程序中，可以将语义、功能相似的同名函数（参数不同），即函数重载，如下程序所示。使用重载的两个理由：这样<strong>便于记忆，提高函数易用性</strong>；类的构造函数需要重载机制，因为C++规定构造函数与类同名，构造函数只能有一个名字，但有时候我们需要几种方法构造对象。</p>
@@ -229,7 +229,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Print</span><span class="params">()</span></span>;      <span class="comment">// 全局函数</span></div><div class="line"><span class="keyword">class</span> A</div><div class="line">&#123;</div><div class="line">    ...</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Print</span><span class="params">()</span></span>;  <span class="comment">// 成员函数</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>不论两个Print 函数的参数是否不同，如果类的某个成员函数要调用全局函数Print，为了与成员函数Print区别，全局函数被调用时应加‘::’标志。如</p>
 <p><strong>::Print(…)</strong>;  // 表示Print是全局函数而非成员函数</p>
-<h3 id="2-成员函数重载overloading-覆盖overwrite和隐藏hide">2. 成员函数重载（Overloading）、覆盖（Overwrite）和隐藏（hide）</h3>
+<h3 id="2-成员函数重载overload-覆盖override和隐藏hide">2. 成员函数重载（Overload）、覆盖（Override）和隐藏（hide）</h3>
 <p><strong>2.1. 关于重载和覆盖</strong><br>
 成员函数被<strong>重载特征</strong>：<br>
 （1）相同的范围，即<strong>同一个类中</strong><br>
@@ -354,6 +354,10 @@ C++ 语言支持函数内联，其目的是为了提高函数的执行效率（�
                         </li>
                     
                     
+                        <li class="next">
+                            <a href="/2017/04/15/C-Struct-and-Class/" data-toggle="tooltip" data-placement="top" title="C++ Struct and Class">Next Post &rarr;</a>
+                        </li>
+                    
                 </ul>
 
                 <!-- duoshuo Share start -->
@@ -381,7 +385,7 @@ C++ 语言支持函数内联，其目的是为了提高函数的执行效率（�
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#c-函数高级特征"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">C++ 函数高级特征</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-函数重载"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">1. 函数重载</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-成员函数重载overloading-覆盖overwrite和隐藏hide"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">2. 成员函数重载（Overloading）、覆盖（Overwrite）和隐藏（hide）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-关于函数参数的缺省值"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">3. 关于函数参数的缺省值</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-关于运算符重载"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">4. 关于运算符重载</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-关于内联inline函数"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">5. 关于内联（inline）函数</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#c-函数高级特征"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">C++ 函数高级特征</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-函数重载"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">1. 函数重载</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-成员函数重载overload-覆盖override和隐藏hide"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">2. 成员函数重载（Overload）、覆盖（Override）和隐藏（hide）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-关于函数参数的缺省值"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">3. 关于函数参数的缺省值</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-关于运算符重载"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">4. 关于运算符重载</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-关于内联inline函数"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">5. 关于内联（inline）函数</span></a></li></ol></li></ol>
         
         </div>
       </aside>

@@ -7,8 +7,16 @@
     </url>
 
     <url>
+        <loc>http://yoursite-url/2017/04/15/C-Struct-and-Class/</loc>
+        <lastmod>2017-04-15T10:03:11.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite-url/2017/04/11/C-Advanced-Features/</loc>
-        <lastmod>2017-04-14T04:39:29.000Z</lastmod>
+        <lastmod>2017-04-15T05:49:16.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
